@@ -4,28 +4,30 @@
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 <body>
 <div class="container-fluid">
-<?php
-include '../partials/navbar.php';
-?>
-<br>
-<h1>Register</h1>
-<br>
+    <?php
+    include '../partials/navbar.php';
+    ?>
+    <br>
+    <h1>Register</h1>
+    <br>
 </div>
+
 <div class="container-sm">
-    <form>
+    <form action="../partials/registerbdd.php" method="POST">
         <div class="form-group">
             <label for="formGroupExampleInput">Pseudo</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Pseudo">
+            <input type="text" class="form-control" id="pseudo" placeholder="Pseudo" name="pseudo">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Mot de passe</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <input type="password" class="form-control" id="Password" placeholder="Password" name="password">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Confirmer le mot de passe</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">
+            <input type="password" class="form-control" id="ConfirmPassword" placeholder="Confirm Password">
         </div>
-        <button type="submit" class="btn btn-secondary">Submit</button>
+        <input type="submit" value="Valider" />
+<!--        <button type="submit" value="OK" class="btn btn-secondary">Submit</button>-->
     </form>
 </div>
 
