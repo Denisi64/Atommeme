@@ -15,24 +15,24 @@
 <div class="container-sm">
     <form action="../partials/registerbdd.php" method="POST">
         <div class="form-group">
-            <label for="formGroupExampleInput">Pseudo</label>
+            <label for="formGroupExampleInput">Pseudo*</label>
             <input type="text" class="form-control" id="pseudo" placeholder="Pseudo" name="pseudo">
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Mot de passe</label>
+            <label for="exampleInputPassword1">Mot de passe*</label>
             <input type="password" class="form-control" id="Password" placeholder="Password" name="password">
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Confirmer le mot de passe</label>
+            <label for="exampleInputPassword1">Confirmer le mot de passe*</label>
             <input type="password" class="form-control" id="ConfirmPassword" placeholder="Confirm Password">
         </div>
-        <input type="submit" value="Valider" />
-<!--        <button type="submit" value="OK" class="btn btn-secondary">Submit</button>-->
+        <button type="submit" value="OK" class="btn btn-secondary">Submit</button>
     </form>
 </div>
 
-
-
+<div class="container-fluid">
+    <p>*: Champs obligatoires</p>-
+</div>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

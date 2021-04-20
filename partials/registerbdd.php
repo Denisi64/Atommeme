@@ -1,17 +1,20 @@
 <?php
+include '../partials/conectionbdd.php';
+if (isset($_POST["pseudo"]) && ($_POST["pseudo"] != "")) {
 
-if(isset($_POST["pseudo"]) && ($_POST["pseudo"] !="")) {
-    $_POST["pseudo"];
-    echo "<p>Bonjour !</p>";
 
-echo "<p>Je sais comment tu t'appelles, hé hé. Tu t'appelles !";
-    echo $_POST['pseudo'];
-    echo "</p>";
-}
-else{
-    echo "<p> Tu n'as pas de pseudo :p</p>";
+    $pseudo = $_POST["pseudo"];
+    $password = $_POST["password"];
+    $sql = "INSERT INTO user (username, password) VALUES ('$pseudo', '$password')";
+    $conn = connection();
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$pseudo, $password]);
+    $conn = null;
+
+    header('Location: ../index.php');
+    exit();
+} else {
+    header('Location: ../page/register.php');
+    exit();
 }
 ?>
-
-
-
