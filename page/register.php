@@ -1,4 +1,5 @@
 <?php
+$errlogin="";
 if (isset($_GET['err'])) {
     if ($_GET['err'] == 1) {
         $errlogin = "Le pseudo est déja pris";
