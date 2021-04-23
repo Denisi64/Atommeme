@@ -10,7 +10,7 @@ if (isset($_POST["pseudo"]) && ($_POST["pseudo"] != "")) {
     $stmt->execute();
     while ($donnees = $stmt->fetch()) {
         if ($_POST["pseudo"] == $donnees['username']) {
-            header('Location: ../page/register.php');
+            header('Location: ../page/register.php?err=1');
             exit();
         }
     }
@@ -29,7 +29,7 @@ if (isset($_POST["pseudo"]) && ($_POST["pseudo"] != "")) {
 
     header('Location: ../index.php');
 } else {
-    header('Location: ../page/register.php');
+    header('Location: ../page/register.php?err=2');
 }
 exit();
 ?>

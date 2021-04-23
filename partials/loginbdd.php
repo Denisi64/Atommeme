@@ -18,10 +18,8 @@ if (isset($_POST["pseudo"]) && ($_POST["pseudo"] != "")) {
     $_SESSION['pseudo']=$pseudo;
     $_SESSION['roles']=$donnees['roles'];
     header('Location: ../index.php');
-    exit();
 } else {
     header('Location: ../page/login.php');
-    exit();
 }
-
+exit();
 ?>

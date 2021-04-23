@@ -1,3 +1,11 @@
+<?php
+if (isset($_GET['err'])) {
+    if ($_GET['err'] == 1) {
+        $errlogin = "Le pseudo est déja pris";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
@@ -10,21 +18,23 @@
     <br>
     <h1>Register</h1>
     <br>
-</div>
 
+</div>
 <div class="container-sm">
     <form action="../partials/registerbdd.php" method="POST">
         <div class="form-group">
-            <label for="formGroupExampleInput">Pseudo*</label>
-            <input type="text" class="form-control" id="pseudo" placeholder="Pseudo" name="pseudo">
+            <label for="pseudo">Pseudo*
+                <?= $errlogin ?>
+            </label>
+            <input type="text" class="form-control" id="pseudo" placeholder="Pseudo" name="pseudo" required>
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Mot de passe*</label>
-            <input type="password" class="form-control" id="Password" placeholder="Password" name="password">
+            <label for="password">Mot de passe*</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Confirmer le mot de passe*</label>
-            <input type="password" class="form-control" id="ConfirmPassword" placeholder="Confirm Password">
+            <label for="confirmPassword">Confirmer le mot de passe*</label>
+            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>
         </div>
         <button type="submit" value="OK" class="btn btn-secondary">Submit</button>
     </form>

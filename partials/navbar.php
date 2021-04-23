@@ -1,4 +1,6 @@
+<?php
 
+?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="../index.php">Atommeme</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
