@@ -17,7 +17,7 @@
                    aria-expanded="false">Connexion</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="../page/register.php">Inscrivez vous</a>
-                    <a class="dropdown-item" href="#">Connectez vous</a>
+                    <a class="dropdown-item" href="../page/login.php">Connectez vous</a>
                 </div>
             </li>
         </ul>
