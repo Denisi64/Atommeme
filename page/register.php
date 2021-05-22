@@ -1,8 +1,16 @@
 <?php
-$errlogin="";
+$errlogin = "";
+$errlogin2 = "";
 if (isset($_GET['err'])) {
     if ($_GET['err'] == 1) {
-        $errlogin = "Le pseudo est déja pris";
+        $errlogin = "<div class='error'>
+ <p>Le pseudo est déja pris</p>
+</div>";
+    }
+    if ($_GET['err'] == 2) {
+        $errlogin2 = "<div class='error'>
+ <p>le mot de passe n'est pas pareil dans les deux champs</p>
+</div>";
     }
 }
 ?>
@@ -11,6 +19,7 @@ if (isset($_GET['err'])) {
 <html>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<link rel="stylesheet" href="../css/style.css">
 <body>
 <div class="container-fluid">
     <?php
@@ -34,15 +43,17 @@ if (isset($_GET['err'])) {
             <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
         </div>
         <div class="form-group">
-            <label for="confirmPassword">Confirmer le mot de passe*</label>
-            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>
+            <label for="confirmPassword">Confirmer le mot de passe*
+            </label>
+            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword" required>
         </div>
         <button type="submit" value="OK" class="btn btn-secondary">Submit</button>
     </form>
+    <?= $errlogin2 ?>
 </div>
 
 <div class="container-fluid">
-    <p>*: Champs obligatoires</p>-
+    <p>*: Champs obligatoires</p>
 </div>
 </body>
 

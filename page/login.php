@@ -1,3 +1,20 @@
+<?php
+
+$errlogin = "";
+$errlogin2 = "";
+if (isset($_GET['err'])) {
+    if ($_GET['err'] == 1) {
+        $errlogin = "<div class='error'>
+ <p>Le pseudo n'est pas inscris</p>
+</div>";
+    }
+    if ($_GET['err'] == 2) {
+        $errlogin2 = "<div class='error'>
+ <p>le mot de passe est incorrect</p>
+</div>";
+    }
+}
+?>
 
 
 <!DOCTYPE html>
@@ -15,9 +32,11 @@
 </div>
 
 <div class="container-sm">
-    <form action="../partials/registerbdd.php" method="POST">
+    <form action="../partials/loginbdd.php" method="POST">
         <div class="form-group">
-            <label for="formGroupExampleInput">Pseudo*</label>
+            <label for="formGroupExampleInput">Pseudo*
+                <?= $errlogin ?>
+            </label>
             <input type="text" class="form-control" id="pseudo" placeholder="Pseudo" name="pseudo">
         </div>
         <div class="form-group">
@@ -26,10 +45,11 @@
         </div>
         <button type="submit" value="OK" class="btn btn-secondary">Submit</button>
     </form>
+    <?= $errlogin2 ?>
 </div>
 
 <div class="container-fluid">
-    <p>*: Champs obligatoires</p>-
+    <p>*: Champs obligatoires</p>
 </div>
 </body>
 

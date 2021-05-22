@@ -14,7 +14,8 @@ if (isset($_POST["pseudo"]) && ($_POST["pseudo"] != "")) {
     $isDisabled = 0;
 
     checkUsername($connection);
-    createUser($connection);
+    checkPassword($connection);
+    createUser($connection,$pseudo,$password,$role,$img,$date,$update,$isDisabled);
 
     $connection = null;
 
@@ -36,7 +37,16 @@ function checkUsername($connection)
     }
 }
 
-function createUser($connection)
+function  checkPassword($connection)
+{
+    if ($_POST["password"] != $_POST["confirmPassword"]) {
+        header('Location: ../page/register.php?err=2');
+        exit();
+    }
+
+}
+
+function createUser($connection,$pseudo,$password,$role,$img,$date,$update,$isDisabled)
 {
 
     $sql = "INSERT INTO user (username, password, roles, image, created_at, updated_at, is_disabled) VALUES ('$pseudo', '$password', '$role', '$img', '$date', '$update', '$isDisabled')";
