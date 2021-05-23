@@ -9,7 +9,7 @@ if (isset($_POST["pseudo"]) && ($_POST["pseudo"] != "")) {
     $pseudo = $_POST["pseudo"];
     $password = $_POST["password"];
     checkUsername($conn, $pseudo);
-    checkPassword($conn, $password, $pseudo);
+    checkPassword($conn, $pseudo, $password);
 
 
 //    $sql = "SELECT roles FROM user WHERE username=$pseudo AND password=$password";
@@ -24,7 +24,8 @@ if (isset($_POST["pseudo"]) && ($_POST["pseudo"] != "")) {
     header('Location: ../page/login.php');
 }
 exit();
-
+?>
+<?php
 function checkUsername($conn, $pseudo)
 {
     $isIndatabase = false;
@@ -44,19 +45,14 @@ function checkUsername($conn, $pseudo)
 
 function checkPassword($conn, $pseudo, $password)
 {
-    $isIndatabase = false;
-    $sql = "SELECT password FROM user WHERE (username) VALUES ('$pseudo')";
+    $sql = "SELECT password FROM user WHERE username='$pseudo'";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $donnees = $stmt->fetch();
-    if ($password == $donnees['password']) {
-        $isIndatabase = true;
-    }
-
-    if (!$isIndatabase) {
-        header('Location: ../page/login.php?err=1');
+    if ($password != $donnees['password']) {
+        header('Location: ../page/login.php?err=2');
         exit();
     }
-}
 
+}
 ?>
