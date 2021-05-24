@@ -14,12 +14,12 @@ if (isset($_POST["pseudo"]) && ($_POST["pseudo"] != "")) {
     $isDisabled = 0;
 
     checkUsername($connection);
-    checkPassword($connection);
+    checkPassword();
     createUser($connection,$pseudo,$password,$role,$img,$date,$update,$isDisabled);
 
     $connection = null;
 
-    header('Location: ../index.php');
+    header('Location: ../page/index.php');
 } else {
     header('Location: ../page/register.php?err=2');
 }
@@ -37,7 +37,7 @@ function checkUsername($connection)
     }
 }
 
-function  checkPassword($connection)
+function  checkPassword()
 {
     if ($_POST["password"] != $_POST["confirmPassword"]) {
         header('Location: ../page/register.php?err=2');

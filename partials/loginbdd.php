@@ -12,14 +12,15 @@ if (isset($_POST["pseudo"]) && ($_POST["pseudo"] != "")) {
     checkPassword($conn, $pseudo, $password);
 
 
-//    $sql = "SELECT roles FROM user WHERE username=$pseudo AND password=$password";
-//    $stmt = $conn->prepare($sql);
-//    $stmt->execute([$pseudo, $password]);
-//    $conn = null;
-//    $donnees = $stmt->fetch();
-//    $_SESSION['pseudo'] = $pseudo;
-//    $_SESSION['roles'] = $donnees['roles'];
-    header('Location: ../index.php');
+    $sql = "SELECT * FROM user WHERE username='$pseudo' AND password='$password'";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$pseudo, $password]);
+    $donnees = $stmt->fetch();
+    $_SESSION['id'] = $donnees['id'];
+    $_SESSION['roles'] = $donnees['roles'];
+    $_SESSION['pseudo']= $pseudo;
+
+    header('Location: ../page/index.php');
 } else {
     header('Location: ../page/login.php');
 }
