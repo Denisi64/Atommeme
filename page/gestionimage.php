@@ -79,22 +79,22 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="../partials/addimage.php" method="POST">
+                <form action="../partials/addimage.php" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="pseudo">Nom :
                         </label>
-                        <input type="text" class="form-control" id="pseudo" placeholder="Nom" name="nom" required>
+                        <input type="text" class="form-control" id="nom" placeholder="Nom" name="nom" required>
                     </div>
                     <div class="form-group">
-                        <label for="password">Description :</label>
+                        <label for="description">Description :</label>
                         <input type="text" class="form-control" id="description" placeholder="Description"
                                name="description" required>
                     </div>
                     <div class="form-group">
-                        <label for="confirmPassword">Image :
+                        <label for="image">Image :
                         </label>
                         <input type="file" class="form-control" id="image" placeholder="Image"
-                               name="confirmPassword" required>
+                               name="image" accept=".jpg, .png, .gif, .jpeg">
                     </div>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-dark">Save changes</button>
