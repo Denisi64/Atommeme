@@ -50,8 +50,8 @@
                 <td><?= $meme->nomCat ?></td>
                 <td><?= $meme->pseudo ?></td>
                 <td>
-                    <button type="button" class="btn btn-dark"><i class="icofont-pencil"></i></button>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
+                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modalEdit-<?= $meme->id ?>"><i class="icofont-pencil"></i></button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete-<?= $meme->id ?>">
                         <i class="icofont-trash"></i>
                     </button>
                 </td>
@@ -68,7 +68,6 @@
     </button>
 
 </div>
-
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -109,7 +108,8 @@
     </div>
 </div>
 
-<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog">
+<?php foreach ( $donnees as $meme ): ?>
+<div class="modal fade" id="modalDelete-<?= $meme->id ?>" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -122,12 +122,49 @@
                 <p>Voulez vous vraiment supprimer les données.</p>
             </div>
             <div class="modal-footer">
-                <a href="/dice-trash?id={{ item.id }}" title="supprimer" class="btn btn-primary">Oui</a>
+                <a href="../partials/deleteimage.php?memeId=<?= $meme->id ?>">Oui</a>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
             </div>
         </div>
     </div>
 </div>
+
+
+    <div class="modal fade" id="modalEdit-" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="/dice-edit" method="post">
+                    <div class="modal-body">
+                        <label>
+                            Nom:
+                            <input id="name" value="{{ item.name }}" type="text" name="name" required>
+                        </label>
+                        <label>
+                            Face:
+                            <input id="face" value="{{ item.face }}" type="text" name="face" required>
+                        </label>
+                        <label>
+                            Couleur:
+                            <input id="color" value="{{ item.color }}" type="text" name="color" required>
+                        </label>
+                        <input id="id" type="hidden" value="{{ item.id }}" name="id">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" value="Edit" class="btn btn-primary">Oui</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<?php endforeach; ?>
 
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
