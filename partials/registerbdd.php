@@ -26,11 +26,11 @@ if (isset($_POST["pseudo"]) && ($_POST["pseudo"] != "")) {
 
 function checkUsername($connection)
 {
-    $sql = "SELECT username FROM user";
+    $sql = "SELECT user.username AS username FROM user";
     $stmt = $connection->prepare($sql);
     $stmt->execute();
-    while ($donnees = $stmt->fetch()) {
-        if ($_POST["pseudo"] == $donnees['username']) {
+    while ($donnees = $stmt->fetchAll()) {
+        if ($_POST["pseudo"] == $donnees->username) {
             header('Location: ../page/register.php?err=1');
             exit();
         }

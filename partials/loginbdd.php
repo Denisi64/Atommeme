@@ -12,12 +12,12 @@ if (isset($_POST["pseudo"]) && ($_POST["pseudo"] != "")) {
     checkPassword($conn, $pseudo, $password);
 
 
-    $sql = "SELECT * FROM user WHERE username='$pseudo' AND password='$password'";
+    $sql = "SELECT user.id AS id, user.roles AS roles FROM user WHERE username='$pseudo' AND password='$password'";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$pseudo, $password]);
     $donnees = $stmt->fetch();
-    $_SESSION['id'] = $donnees['id'];
-    $_SESSION['roles'] = $donnees['roles'];
+    $_SESSION['id'] = $donnees->id;
+    $_SESSION['roles'] = $donnees->roles;
     $_SESSION['pseudo']= $pseudo;
 
     header('Location: ../page/index.php');
@@ -30,11 +30,11 @@ exit();
 function checkUsername($conn, $pseudo)
 {
     $isIndatabase = false;
-    $sql = "SELECT username FROM user";
+    $sql = "SELECT * FROM user";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     while ($donnees = $stmt->fetch()) {
-        if ($pseudo == $donnees['username']) {
+        if ($pseudo == $donnees->username) {
             $isIndatabase = true;
         }
     }
@@ -50,7 +50,7 @@ function checkPassword($conn, $pseudo, $password)
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $donnees = $stmt->fetch();
-    if ($password != $donnees['password']) {
+    if ($password != $donnees->password) {
         header('Location: ../page/login.php?err=2');
         exit();
     }

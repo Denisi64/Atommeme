@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="../css/icofont.min.css">
 <body>
 <div class="container-fluid">
     <?php
@@ -33,6 +34,7 @@
             <th>Mise à jour le</th>
             <th>Categorie</th>
             <th>Auteur</th>
+            <th>Fonction</th>
         </tr>
         </thead>
         <tbody>
@@ -47,23 +49,27 @@
                 <td><?= $meme->updated ?></td>
                 <td><?= $meme->nomCat ?></td>
                 <td><?= $meme->pseudo ?></td>
+                <td><button type="button" class="btn btn-dark"><i class="icofont-pencil"></i></button> <button type="button" class="btn btn-danger"><i class="icofont-trash"></i></button></td>
 
             </tr>
         <?php endforeach; ?>
         </tbody>
     </table>
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Ajouter un fichier
-    </button>
+
 
 
 </div>
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+    <i class="icofont-ui-image"></i> Ajouter une image
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
@@ -72,25 +78,48 @@
                 </button>
             </div>
             <div class="modal-body">
-                ...
+                <form action="../partials/addimage.php" method="POST">
+                    <div class="form-group">
+                        <label for="pseudo">Pseudo*
+                        </label>
+                        <input type="text" class="form-control" id="pseudo" placeholder="Pseudo" name="pseudo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mot de passe*</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmer le mot de passe*
+                        </label>
+                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword" required>
+                    </div>
+                    <button type="submit" value="OK" class="btn btn-secondary">Submit</button>
+                </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-dark">Save changes</button>
             </div>
         </div>
     </div>
 </div>
 
-</body>
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function() {
         $('#table_id').DataTable();
     } );
 </script>
+
+
 
 </html>
 
