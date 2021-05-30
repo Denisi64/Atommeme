@@ -49,7 +49,10 @@
                 <td><?= $meme->updated ?></td>
                 <td><?= $meme->nomCat ?></td>
                 <td><?= $meme->pseudo ?></td>
-                <td><button type="button" class="btn btn-dark"><i class="icofont-pencil"></i></button> <button type="button" class="btn btn-danger"><i class="icofont-trash"></i></button></td>
+                <td>
+                    <button type="button" class="btn btn-dark"><i class="icofont-pencil"></i></button>
+                    <button type="button" class="btn btn-danger"><i class="icofont-trash"></i></button>
+                </td>
 
             </tr>
         <?php endforeach; ?>
@@ -57,22 +60,20 @@
     </table>
 
 
-
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+        <i class="icofont-ui-image"></i> Ajouter une image
+    </button>
 
 </div>
 
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
-    <i class="icofont-ui-image"></i> Ajouter une image
-</button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Ajouter une image</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -80,25 +81,27 @@
             <div class="modal-body">
                 <form action="../partials/addimage.php" method="POST">
                     <div class="form-group">
-                        <label for="pseudo">Pseudo*
+                        <label for="pseudo">Nom :
                         </label>
-                        <input type="text" class="form-control" id="pseudo" placeholder="Pseudo" name="pseudo" required>
+                        <input type="text" class="form-control" id="pseudo" placeholder="Nom" name="nom" required>
                     </div>
                     <div class="form-group">
-                        <label for="password">Mot de passe*</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+                        <label for="password">Description :</label>
+                        <input type="text" class="form-control" id="description" placeholder="Description"
+                               name="description" required>
                     </div>
                     <div class="form-group">
-                        <label for="confirmPassword">Confirmer le mot de passe*
+                        <label for="confirmPassword">Image :
                         </label>
-                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword" required>
+                        <input type="file" class="form-control" id="image" placeholder="Image"
+                               name="confirmPassword" required>
                     </div>
-                    <button type="submit" value="OK" class="btn btn-secondary">Submit</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-dark">Save changes</button>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-dark">Save changes</button>
+
             </div>
         </div>
     </div>
@@ -114,11 +117,10 @@
         crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#table_id').DataTable();
-    } );
+    });
 </script>
-
 
 
 </html>
