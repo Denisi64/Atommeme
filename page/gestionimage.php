@@ -130,7 +130,7 @@
 </div>
 
 
-    <div class="modal fade" id="modalEdit-" tabindex="-1" role="dialog">
+    <div class="modal fade" id="modalEdit-<?= $meme->id ?>" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -139,21 +139,19 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="/dice-edit" method="post">
+                <form action="../partials/editimage.php" method="POST">
                     <div class="modal-body">
                         <label>
                             Nom:
-                            <input id="name" value="{{ item.name }}" type="text" name="name" required>
+                            <input id="nom" value="<?= $meme->name ?>" type="text" name="nom" required>
                         </label>
                         <label>
-                            Face:
-                            <input id="face" value="{{ item.face }}" type="text" name="face" required>
+                            Description:
+                            <input id="description" value="<?= $meme->description ?>" type="text" name="description" required>
                         </label>
-                        <label>
-                            Couleur:
-                            <input id="color" value="{{ item.color }}" type="text" name="color" required>
-                        </label>
-                        <input id="id" type="hidden" value="{{ item.id }}" name="id">
+                            Image:
+                            <input type="file" class="form-control" id="image" placeholder="Image"
+                                   name="image" accept=".jpg, .png, .gif, .jpeg">
                     </div>
                     <div class="modal-footer">
                         <button type="submit" value="Edit" class="btn btn-primary">Oui</button>
