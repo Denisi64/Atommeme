@@ -51,7 +51,9 @@
                 <td><?= $meme->pseudo ?></td>
                 <td>
                     <button type="button" class="btn btn-dark"><i class="icofont-pencil"></i></button>
-                    <button type="button" class="btn btn-danger"><i class="icofont-trash"></i></button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">
+                        <i class="icofont-trash"></i>
+                    </button>
                 </td>
 
             </tr>
@@ -107,6 +109,25 @@
     </div>
 </div>
 
+<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Supression</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Voulez vous vraiment supprimer les données.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="/dice-trash?id={{ item.id }}" title="supprimer" class="btn btn-primary">Oui</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
