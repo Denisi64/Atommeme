@@ -7,13 +7,14 @@ if (isset($_POST["nom"]) && ($_POST["nom"] != "")) {
     $connection = connection();
     $nom = $_POST["nom"];
     $description = $_POST["description"];
-    checkImage();
+    $image = checkImage();
     $date = date("Y-m-d H:i");
     $update = $date;
     $isDisabled = 0;
     $authorid = $_SESSION['id'];
     $categoryid = 1;
-    createImage($connection, $nom , $description, $date, $isDisabled , $update, $authorid, $categoryid);
+    createImage($connection, $nom , $image, $description, $date, $isDisabled , $update, $authorid, $categoryid);
+    header('Location: ../page/gestionimage.php');
 
 }
 
@@ -26,7 +27,7 @@ function checkImage()
 
     }
     else{
-        $image = "img.jpg";
+        $image = "imh.jpg";
         return $image;
 
     }
@@ -35,9 +36,9 @@ function checkImage()
 function createImage($connection, $nom , $image, $description, $date, $isDisabled , $update, $authorid, $categoryid)
 {
 
-    $sql = "INSERT INTO meme (name, image, description, created_at, is_published, updated_at, author_id, category_id) VALUES ('$nom', '$image', '$description', '$date', '$isDisabled ', '$update', '$authorid', '$categoryid')";
+    $sql = "INSERT INTO meme (name, image, description, created_at, is_published, updated, author_id, category_id) VALUES ('$nom', '$image', '$description', '$date', '$isDisabled ', '$update', '$authorid', '$categoryid')";
     $stmt = $connection->prepare($sql);
-    $stmt->execute([$connection, $nom , $image, $description, $date, $isDisabled , $update, $authorid, $categoryid]);
+    $stmt->execute([$nom , $image, $description, $date, $isDisabled , $update, $authorid, $categoryid]);
 }
 exit();
 

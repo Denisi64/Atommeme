@@ -42,7 +42,7 @@
             <tr>
                 <td><?= $meme->id ?></td>
                 <td><?= $meme->name ?></td>
-                <td><?= $meme->image ?></td>
+                <td><img src="../img/meme/<?= $meme->image ?>" alt="<?= $meme->name ?>"></td>
                 <td><?= $meme->description ?></td>
                 <td><?= $meme->published ?></td>
                 <td><?= $meme->created ?></td>
