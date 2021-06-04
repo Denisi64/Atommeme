@@ -1,7 +1,7 @@
 <?php
 include '../partials/conectionbdd.php';
 $connection = connection();
-$memeId=$_GET['memeId'];
+$memeId = $_GET['memeId'];
 $sql = "DELETE FROM meme WHERE id= '$memeId' ";
 $stmt = $connection->prepare($sql);
 $stmt->execute();

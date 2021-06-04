@@ -7,13 +7,17 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="https://media1.giphy.com/media/13twUEuUnCrEju/giphy.gif" alt="First slide" width="auto" max-width="500px">
+            <img class="d-block w-100" src="https://media1.giphy.com/media/13twUEuUnCrEju/giphy.gif" alt="First slide"
+                 width="auto" max-width="500px">
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="https://dailymars-cdn-fra1.fra1.digitaloceanspaces.com/wp-content/uploads/2017/10/KH-0.png" alt="Second slide" width="auto" max-width="500px">
+            <img class="d-block w-100"
+                 src="https://dailymars-cdn-fra1.fra1.digitaloceanspaces.com/wp-content/uploads/2017/10/KH-0.png"
+                 alt="Second slide" width="auto" max-width="500px">
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="https://www.maxoe.com/img/uploads/2017/05/KH-15-25-Remix-en-t%C3%AAte.jpg" alt="Third slide" width="auto" max-width="500px">
+            <img class="d-block w-100" src="https://www.maxoe.com/img/uploads/2017/05/KH-15-25-Remix-en-t%C3%AAte.jpg"
+                 alt="Third slide" width="auto" max-width="500px">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

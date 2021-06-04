@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
@@ -6,13 +5,13 @@
 
 <body>
 <div class="container-fluid">
-<?php
-include '../partials/navbar.php';
-?>
+    <?php
+    include '../partials/navbar.php';
+    ?>
     <br>
-<?php
-include '../partials/carousel.php';
-?>
+    <?php
+    include '../partials/carousel.php';
+    ?>
 </div>
 
 </body>

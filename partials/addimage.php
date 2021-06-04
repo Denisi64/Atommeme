@@ -2,6 +2,7 @@
 session_start();
 include '../partials/conectionbdd.php';
 include '../partials/timezone.php';
+
 $connection = connection();
 
 if (isset($_POST["nom"]) && ($_POST["nom"] != "")) {
@@ -13,16 +14,6 @@ if (isset($_POST["nom"]) && ($_POST["nom"] != "")) {
     $sql = "INSERT INTO meme (name, image, description, created_at, is_published, updated, author_id, category_id)
       VALUES ( :name, :image, :description, :created, :isDisabled ,:updated, :authorid, :categoryid)";
     $stmt = $connection->prepare($sql);
-
-//    var_dump('nom' .$_POST['nom']. '<br>');
-//    var_dump('image' .$_FILES['image']['name']. '<br>');
-//    var_dump('description' .$_POST["description"]. '<br>');
-//    var_dump('date' .$date. '<br>');
-//    var_dump('isDisabled' .$isDisabled. '<br>');
-//    var_dump('updated' .$updated. '<br>');
-//    var_dump('id' .$_SESSION['id']. '<br>');
-//    var_dump('cat' .$categoryid. '<br>');
-//    die();
 
     $stmt->bindValue('name', $_POST["nom"], PDO::PARAM_STR);
     $stmt->bindValue('image', !empty($_FILES['image']['name']) ? $_FILES['image']['name'] : 'default.jpg', PDO::PARAM_STR);

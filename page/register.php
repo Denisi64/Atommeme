@@ -45,7 +45,8 @@ if (isset($_GET['err'])) {
         <div class="form-group">
             <label for="confirmPassword">Confirmer le mot de passe*
             </label>
-            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword" required>
+            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password"
+                   name="confirmPassword" required>
         </div>
         <button type="submit" value="OK" class="btn btn-secondary">Submit</button>
     </form>

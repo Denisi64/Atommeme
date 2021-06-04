@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="../css/icofont.min.css">
+
 <body>
 <div class="container-fluid">
     <?php
@@ -32,7 +34,7 @@
             <th>Is published</th>
             <th>Created at</th>
             <th>Mise à jour le</th>
-            <th>Categorie</th>
+            <!--            <th>Categorie</th>-->
             <th>Auteur</th>
             <th>Fonction</th>
         </tr>
@@ -42,16 +44,17 @@
             <tr>
                 <td><?= $meme->id ?></td>
                 <td><?= $meme->name ?></td>
-                <td><img src="../img/meme/<?= $meme->image ?>" alt="<?= $meme->name ?>"></td>
+                <td><img class="container-sm" src="../img/meme/<?= $meme->image ?>" alt="<?= $meme->name ?>"></td>
                 <td><?= $meme->description ?></td>
                 <td><?= $meme->published ?></td>
                 <td><?= $meme->created ?></td>
                 <td><?= $meme->updated ?></td>
-                <td><?= $meme->nomCat ?></td>
                 <td><?= $meme->pseudo ?></td>
                 <td>
-                    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modalEdit-<?= $meme->id ?>"><i class="icofont-pencil"></i></button>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete-<?= $meme->id ?>">
+                    <button type="button" class="btn btn-dark" data-toggle="modal"
+                            data-target="#modalEdit-<?= $meme->id ?>"><i class="icofont-pencil"></i></button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal"
+                            data-target="#modalDelete-<?= $meme->id ?>">
                         <i class="icofont-trash"></i>
                     </button>
                 </td>
@@ -63,18 +66,19 @@
 
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#createImageModal">
         <i class="icofont-ui-image"></i> Ajouter une image
     </button>
 
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modals -->
+<!-- Add Modal -->
+<div class="modal fade" id="createImageModal" tabindex="-1" aria-labelledby="createImageModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ajouter une image</h5>
+                <h5 class="modal-title" id="createImageModalLabel">Ajouter une image</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -107,61 +111,71 @@
         </div>
     </div>
 </div>
-
-<?php foreach ( $donnees as $meme ): ?>
-<div class="modal fade" id="modalDelete-<?= $meme->id ?>" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Supression</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Voulez vous vraiment supprimer les données.</p>
-            </div>
-            <div class="modal-footer">
-                <a href="../partials/deleteimage.php?memeId=<?= $meme->id ?>">Oui</a>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-    <div class="modal fade" id="modalEdit-<?= $meme->id ?>" tabindex="-1" role="dialog">
+<!---->
+<!-- Delete Modals -->
+<?php foreach ($donnees as $meme): ?>
+    <div class="modal fade" id="modalDelete-<?= $meme->id ?>" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Edit</h5>
+                    <h5 class="modal-title">Supression</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="../partials/editimage.php" method="POST">
-                    <div class="modal-body">
-                        <label>
-                            Nom:
-                            <input id="nom" value="<?= $meme->name ?>" type="text" name="nom" required>
-                        </label>
-                        <label>
-                            Description:
-                            <input id="description" value="<?= $meme->description ?>" type="text" name="description" required>
-                        </label>
-                            Image:
-                            <input type="file" class="form-control" id="image" placeholder="Image"
-                                   name="image" accept=".jpg, .png, .gif, .jpeg">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" value="Edit" class="btn btn-primary">Oui</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
-                    </div>
-                </form>
+                <div class="modal-body">
+                    <p>Voulez vous vraiment supprimer les données.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="../partials/deleteimage.php?memeId=<?= $meme->id ?>">Oui</a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+                </div>
             </div>
         </div>
     </div>
+    <!---->
+    <!-- Edit Modals -->
+    <div class="modal fade" id="modalEdit-<?= $meme->id ?>" tabindex="-1" aria-labelledby="editImageModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editImageModalLabel">Modifier une image</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="../partials/editimage.php" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="pseudo">Nom :
+                            </label>
+                            <input type="text" class="form-control" id="nom" placeholder="Nom" name="nom"
+                                   value="<?= $meme->name ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description :</label>
+                            <input type="text" class="form-control" id="description" placeholder="Description"
+                                   name="description" value="<?= $meme->description ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image :
+                            </label>
+                            <input type="file" class="form-control" id="image" placeholder="Image"
+                                   name="image" accept=".jpg, .png, .gif, .jpeg">
+                        </div>
+                        <input type="hidden" value="<?= $meme->id ?>" name="id">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-dark">Sauvegarder les modifications</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
 
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---->
 <?php endforeach; ?>
 
 </body>
@@ -177,7 +191,5 @@
         $('#table_id').DataTable();
     });
 </script>
-
-
 </html>
 

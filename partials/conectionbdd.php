@@ -1,4 +1,3 @@
-
 <?php
 function connection()
 {
@@ -12,7 +11,7 @@ function connection()
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
     ];
     try {
-        $conn = new PDO($dns, $username, $password,$options);
+        $conn = new PDO($dns, $username, $password, $options);
         // set the PDO error mode to exception
     } catch (Exception $e) {
         echo 'Exception reçue : ', $e->getMessage(), "\n";
