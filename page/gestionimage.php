@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="../css/icofont.min.css">
+<link rel="stylesheet" href="../css/style.css">
 
 <body>
 <div class="container-fluid">
@@ -23,7 +23,16 @@
     $donnees = $stmt->fetchAll();
     ?>
 
-    <h1>Gestionaire d'images</h1>
+    <h1>Gestionnaire d'images</h1>
+    <br>
+    <br>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#createImageModal">
+        <i class="icofont-ui-image"></i> Ajouter une image
+    </button>
+    <br>
+    <br>
+    <br>
     <table class="table table-hover" id="table_id">
         <thead>
         <tr>
@@ -44,7 +53,7 @@
             <tr>
                 <td><?= $meme->id ?></td>
                 <td><?= $meme->name ?></td>
-                <td><img class="container-sm" src="../img/meme/<?= $meme->image ?>" alt="<?= $meme->name ?>"></td>
+                <td><img src="../img/meme/<?= $meme->image ?>" alt="<?= $meme->name ?>" class="resize fluid img-thumbnail"></td>
                 <td><?= $meme->description ?></td>
                 <td><?= $meme->published ?></td>
                 <td><?= $meme->created ?></td>
@@ -63,12 +72,6 @@
         <?php endforeach; ?>
         </tbody>
     </table>
-
-
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#createImageModal">
-        <i class="icofont-ui-image"></i> Ajouter une image
-    </button>
 
 </div>
 

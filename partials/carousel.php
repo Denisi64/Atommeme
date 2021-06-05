@@ -5,19 +5,19 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img class="d-block w-100" src="https://media1.giphy.com/media/13twUEuUnCrEju/giphy.gif" alt="First slide"
-                 width="auto" max-width="500px">
+    <div class="carousel-inner ">
+        <div class="carousel-item active ">
+            <img class="img-fluid mx-auto" src="https://media1.giphy.com/media/13twUEuUnCrEju/giphy.gif" alt="First slide"
+                 max-width="500px">
         </div>
-        <div class="carousel-item">
-            <img class="d-block w-100"
+        <div class="carousel-item ">
+            <img class="img-fluid mx-auto"
                  src="https://dailymars-cdn-fra1.fra1.digitaloceanspaces.com/wp-content/uploads/2017/10/KH-0.png"
-                 alt="Second slide" width="auto" max-width="500px">
+                 alt="Second slide" max-width="500px">
         </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src="https://www.maxoe.com/img/uploads/2017/05/KH-15-25-Remix-en-t%C3%AAte.jpg"
-                 alt="Third slide" width="auto" max-width="500px">
+        <div class="carousel-item ">
+            <img class="img-fluid mx-auto" src="https://www.maxoe.com/img/uploads/2017/05/KH-15-25-Remix-en-t%C3%AAte.jpg"
+                 alt="Third slide" max-width="500px">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

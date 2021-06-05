@@ -11,3 +11,8 @@
     color: green;
     font-weight: bold;
 }
+
+.resize {
+    max-width: 400px !important;
+
+}

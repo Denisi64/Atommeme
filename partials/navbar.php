@@ -20,15 +20,20 @@ if (isset($_SESSION["pseudo"])) {
             </li>
             <?php
             if (isset($_SESSION['roles']) && $_SESSION['roles'] == 2) {
-                echo '<li class="nav-item active">
-                        <a class="nav-link" href="../page/gestionimage.php">Gestion Image
-                            <span class="sr-only">(current)</span>
-                        </a>
-                      </li>
+            echo '<li class="nav-item active">
+                <a class="nav-link" href="../page/gestionimage.php">Gestion Image
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>';   }?>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <?php
+            if (isset($_SESSION['roles']) && $_SESSION['roles'] == 2) {
+                echo '
             <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                            aria-expanded="false">Bonjour, 
-                            <?= $pseudoHtml ?> 
+                            aria-expanded="false">Bonjour, '.$pseudoHtml.' 
+                          
                             </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="../page/myaccount.php">Mon Compte</a>
@@ -45,10 +50,11 @@ if (isset($_SESSION["pseudo"])) {
                     <a class="dropdown-item"  href="../page/login.php">Connectez vous</a>
                 </div>
             </li>';
+
             }
+
             ?>
 
         </ul>
     </div>
 </nav>
-
