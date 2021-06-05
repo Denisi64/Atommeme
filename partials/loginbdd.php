@@ -11,6 +11,8 @@ if (isset($_POST["pseudo"]) && ($_POST["pseudo"] != "")) {
     checkUsername($conn, $pseudo);
     checkPassword($conn, $pseudo, $password);
 
+    $connection = null;
+
 
     $sql = "SELECT user.id AS id, user.roles AS roles FROM user WHERE username='$pseudo' AND password='$password'";
     $stmt = $conn->prepare($sql);

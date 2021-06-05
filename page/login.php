@@ -1,6 +1,7 @@
 <?php
 $errlogin = "";
 $errlogin2 = "";
+$sucess1 = "";
 if (isset($_GET['err'])) {
     if ($_GET['err'] == 1) {
         $errlogin = "<div class='error'>
@@ -13,6 +14,11 @@ if (isset($_GET['err'])) {
 </div>";
     }
 }
+if (isset($_GET['suc'])){
+    $sucess1 = "<div class='sucess'>
+ <p>La modification de l'utilisateur à été effectué reconectez vous svp</p>
+</div>";
+}
 ?>
 
 
@@ -20,6 +26,7 @@ if (isset($_GET['err'])) {
 <html>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<link rel="stylesheet" href="../css/style.css">
 <body>
 <div class="container-fluid">
     <?php
@@ -28,6 +35,7 @@ if (isset($_GET['err'])) {
     <br>
     <h1>Login</h1>
     <br>
+    <?= $sucess1 ?>
 </div>
 
 <div class="container-sm">
