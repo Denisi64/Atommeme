@@ -7,6 +7,7 @@
 <div class="container-fluid">
     <?php
     include '../partials/navbar.php';
+    include'../partials/conectionbdd.php';
 
     $connection = connection();
     $sql = "SELECT meme.id AS id, meme.name AS name, meme.image FROM meme";

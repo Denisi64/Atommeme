@@ -29,7 +29,7 @@ function checkUsername($connection)
     $sql = "SELECT user.username AS username FROM user";
     $stmt = $connection->prepare($sql);
     $stmt->execute();
-    while ($donnees = $stmt->fetchAll()) {
+    while ($donnees = $stmt->fetch()) {
         if ($_POST["pseudo"] == $donnees->username) {
             header('Location: ../page/register.php?err=1');
             exit();

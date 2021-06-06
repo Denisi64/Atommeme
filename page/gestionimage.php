@@ -10,7 +10,7 @@
 <div class="container-fluid">
     <?php
     include '../partials/navbar.php';
-    include '../partials/imgselect.php';
+    include '../partials/conectionbdd.php';
     $connection = connection();
     $sql = "SELECT meme.id AS id, meme.name AS name, meme.image AS image, meme.description AS description,meme.created_at AS created, meme.is_published AS published, meme.updated AS updated, category.name AS nomCat, user.username AS pseudo
     FROM meme
@@ -25,13 +25,10 @@
 
     <h1>Gestionnaire d'images</h1>
     <br>
-    <br>
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#createImageModal">
         <i class="icofont-ui-image"></i> Ajouter une image
     </button>
-    <br>
-    <br>
     <br>
     <table class="table table-hover" id="table_id">
         <thead>
