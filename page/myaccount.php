@@ -1,5 +1,4 @@
 <?php
-
 $errlogin = "";
 $errlogin2 = "";
 if (isset($_GET['err'])) {

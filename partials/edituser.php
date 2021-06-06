@@ -24,9 +24,6 @@ if (isset($_POST["pseudo"]) && ($_POST["pseudo"] != "")) {
     session_destroy();
     header('Location: ../page/login.php?suc=1');
 
-
-
-
 }
 
 function checkUsername($connection, $pseudo)

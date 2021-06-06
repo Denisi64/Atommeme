@@ -2,23 +2,13 @@
 session_start();
 include '../partials/conectionbdd.php';
 include '../partials/timezone.php';
-
 $connection = connection();
-
-//var_dump('id' . $_POST['id'] . '<br>');
-//var_dump('nom' . $_POST['nom'] . '<br>');
-//var_dump('image' . $_FILES['image']['name'] . '<br>');
-//var_dump('description' . $_POST["description"] . '<br>');
-//die();
-
 if (isset($_POST["nom"]) && ($_POST["nom"] != "")) {
     if (!empty($_FILES['image']['name'])) {
         $updated = date("Y-m-d H:i:s");
-//        $sql = "UPDATE meme SET (name, image, description, updated) VALUES ( :name, :image, :description, :updated) WHERE id= :id";
         $sql = "UPDATE meme SET name = :name, image = :image, description = :description, updated = :updated WHERE id= :id";
 
         $stmt = $connection->prepare($sql);
-
 
         $stmt->bindValue('id', $_POST['id'], PDO::PARAM_INT);
         $stmt->bindValue('name', $_POST["nom"], PDO::PARAM_STR);
@@ -37,14 +27,10 @@ if (isset($_POST["nom"]) && ($_POST["nom"] != "")) {
         }
     } else {
         $updated = date("Y-m-d H:i:s");
-//        $sql = "UPDATE meme SET (name, description, updated) VALUES ( :name, :description, :updated)";
         $sql = "UPDATE meme SET name = :name, description = :description, updated = :updated WHERE id= :id";
-
         $stmt = $connection->prepare($sql);
-
         $stmt->bindValue('id', $_POST['id'], PDO::PARAM_INT);
         $stmt->bindValue('name', $_POST["nom"], PDO::PARAM_STR);
-//        $stmt->bindValue('image', !empty($_FILES['image']['name']) ? $_FILES['image']['name'] : 'default.jpg', PDO::PARAM_STR);
         $stmt->bindValue('description', $_POST["description"], PDO::PARAM_STR);
         $stmt->bindValue('updated', $updated, PDO::PARAM_STR);
         $stmt->execute();
