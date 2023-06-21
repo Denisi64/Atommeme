@@ -1,20 +1,27 @@
-<h5>Dernière image</h5>
+<?php
+include 'conectionbdd.php';
+
+$connection = connection();
+$sql = "SELECT meme.id AS id, meme.name AS name, meme.image FROM meme
+        ORDER BY id DESC LIMIT 3";
+$stmt = $connection->prepare($sql);
+$stmt->execute();
+$donnees = $stmt->fetchAll();
+?>
+
+<h5>Dernières images</h5>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <?php for ($i = 0; $i < count($donnees); $i++) { ?>
+            <li data-target="#carouselExampleIndicators" data-slide-to="<?= $i ?>" <?php if ($i == 0) echo 'class="active"'; ?>></li>
+        <?php } ?>
     </ol>
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img class="d-block w-100" src="https://new-game-plus.fr/wp-content/uploads/2020/06/KH-Dark-Road-06.jpg" alt="First slide" width="500px">
-        </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src="https://dailymars-cdn-fra1.fra1.digitaloceanspaces.com/wp-content/uploads/2017/10/KH-0.png" alt="Second slide" width="500px">
-        </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src="https://www.maxoe.com/img/uploads/2017/05/KH-15-25-Remix-en-t%C3%AAte.jpg" alt="Third slide" width="500px">
-        </div>
+        <?php foreach ($donnees as $key => $meme) { ?>
+            <div class="carousel-item <?php if ($key == 0) echo 'active'; ?>">
+                <img class="d-block w-100" src="../img/meme/<?= $meme->image ?>" alt="<?= $meme->name ?>" style="max-height: 750px; object-fit: contain;">
+            </div>
+        <?php } ?>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

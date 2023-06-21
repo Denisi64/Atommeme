@@ -19,7 +19,7 @@ if (isset($_POST["pseudo"]) && ($_POST["pseudo"] != "")) {
 
     $connection = null;
 
-    header('Location: ../page/index.php');
+    header('Location: ../index.php');
 } else {
     header('Location: ../page/register.php?err=2');
 }

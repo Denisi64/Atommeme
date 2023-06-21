@@ -22,7 +22,7 @@ if (isset($_POST["pseudo"]) && ($_POST["pseudo"] != "")) {
     $_SESSION['roles'] = $donnees->roles;
     $_SESSION['pseudo']= $pseudo;
 
-    header('Location: ../page/index.php');
+    header('Location: ../index.php');
 } else {
     header('Location: ../page/login.php');
 }

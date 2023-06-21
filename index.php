@@ -6,11 +6,11 @@
 <body>
 <div class="container-fluid">
     <?php
-    include '../partials/navbar.php';
+    include 'partials/navbar.php';
     ?>
     <br>
     <?php
-    include '../partials/carousel.php';
+    include 'partials/carousel.php';
     ?>
 </div>
 
